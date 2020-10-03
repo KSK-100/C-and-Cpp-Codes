@@ -16,21 +16,24 @@ void main()
 	printf("\n entering random elements into array");
 	for(i=0;i<n;i++)
 	{
-		a[i]=rand();
+		a[i]=rand()%100;
 		printf("%d\t",a[i]);
 	}
 	
 	start=clock();
 	
-	for(i=0;i<n;i++)
+	//notice the range is from 0 to n-1
+	for(i=0;i<n-1;i++)
 	{		
-		for(j=i+1;j<n;j++)
+		for(j=0;j<n-1-i;j++)
 		{
-			if(a[j]<a[i])
+			//comapring a[j+1] with a[j]
+			if(a[j+1]<a[j])
 			{
+				//swapping a[j] and a[j+1]
 				int t=a[j];
-				a[j]=a[i];
-				a[i]=t;
+				a[j]=a[j+1];
+				a[j+1]=t;
 			}	
 		}
 		
