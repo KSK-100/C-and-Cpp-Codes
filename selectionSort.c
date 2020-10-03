@@ -13,7 +13,8 @@ void main()
 	int a[n];
 	
 	printf("\n entering random elements into array");
-	for(i=1;i<=n;i++)
+	//notice the range
+	for(i=0;i<n;i++)
 	{
 		a[i]=rand()%100;
 		printf("%d\t",a[i]);
@@ -21,18 +22,22 @@ void main()
 	
 	start=clock();
 	
-	for(i=0;i<n;i++)
+	for(i=0;i<n-1;i++)
 	{	
-		min=0;	
-		for(j=i;j<n;j++)
+		//consider i as min first
+		min=i;	
+		for(j=i+1;j<n;j++)
 		{
-			if(a[j]<a[i])
-			min=a[j];
+			//compare a[j] with a[min]
+			if(a[j]<a[min])
+				min=j;
+			//store index of min
 		}
 		
+		//swapping arr[min] with arr[i]
 		int t=a[min];
-		a[min]=a[j];
-		a[j]=t;
+		a[min]=a[i];
+		a[i]=t;
 	}
 	
 	end=clock();
